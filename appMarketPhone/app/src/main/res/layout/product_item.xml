@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/selector_item_product">
+
+    <ImageView
+        android:id="@+id/ivImageProductItem"
+        android:layout_width="@dimen/size_image_product"
+        android:layout_height="@dimen/size_image_product"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/appbar_padding_top"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvTitleProductItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiêu đề sản phẩm"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_tvTitleProductItem"/>
+
+        <TextView
+            android:id="@+id/tvPriceProductItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiêu đề sản phẩm"
+            android:textColor="@color/red"
+            android:textSize="@dimen/textSize_tvTitleProductItem"/>
+
+        <TextView
+            android:id="@+id/tvDatePostProductItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiêu đề sản phẩm" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.nguyen.thanhlong.chosmartphone.ListPostFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingLeft="@dimen/appbar_padding_top"
+    android:paddingRight="@dimen/appbar_padding_top">
+
+    <SearchView
+        android:id="@+id/svProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="@string/queryHint_svProduct"/>
+
+    <ListView
+        android:id="@+id/lvProduct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/appbar_padding_top"
+        android:dividerHeight="@dimen/appbar_padding_top"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:divider="@color/transparent"
+        android:background="@color/transparent"/>
+
+</LinearLayout>

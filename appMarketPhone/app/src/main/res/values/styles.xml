@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="switchStyle">
+        <item name="colorControlActivated">#279af2</item>
+        <item name="android:colorForeground">#8e8f8e</item>
+    </style>
+
+    <style name="SwitchTextAppearance"
+        parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textColor">#ff7300</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+</resources>

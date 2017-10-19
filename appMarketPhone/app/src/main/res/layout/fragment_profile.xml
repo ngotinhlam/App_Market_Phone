@@ -1,0 +1,247 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.nguyen.thanhlong.chosmartphone.ProfileFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rlProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="@drawable/selector"
+        android:paddingLeft="@dimen/paddingLeft_layout_screen"
+        android:paddingRight="@dimen/paddingRight_layout_screen"
+        android:paddingTop="@dimen/paddingLeft_layout_screen"
+        android:paddingBottom="@dimen/paddingLeft_layout_screen"
+        tools:context=".LoginActivity"
+        android:layout_alignParentTop="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleViewAvatar"
+            android:layout_width="@dimen/size_avatar"
+            android:layout_height="@dimen/size_avatar"
+            android:src="@drawable/logo_no_avatar" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/circleViewAvatar"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textColor="#000"
+                android:textSize="@dimen/textSize_tvProfileName"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_profile"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@id/rlProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llMyNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/selector_option"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:paddingLeft="@dimen/paddingLeft_layout_screen"
+                android:paddingRight="@dimen/paddingLeft_layout_screen"
+                android:paddingTop="@dimen/appbar_padding_top"
+                android:paddingBottom="@dimen/appbar_padding_top"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/logo_letter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_news"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/selector_option"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:paddingLeft="@dimen/paddingLeft_layout_screen"
+                android:paddingRight="@dimen/paddingLeft_layout_screen"
+                android:paddingTop="@dimen/appbar_padding_top"
+                android:paddingBottom="@dimen/appbar_padding_top"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/logo_love" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/favorite"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSearchSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/selector_option"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:paddingLeft="@dimen/paddingLeft_layout_screen"
+                android:paddingRight="@dimen/paddingLeft_layout_screen"
+                android:paddingTop="@dimen/appbar_padding_top"
+                android:paddingBottom="@dimen/appbar_padding_top"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/logo_flag" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_save"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:background="@drawable/selector_option"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:paddingLeft="@dimen/paddingLeft_layout_screen"
+                android:paddingTop="@dimen/appbar_padding_top"
+                android:paddingBottom="@dimen/appbar_padding_top"
+                android:clickable="true">
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/scNotification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/paddingRight_layout_screen"
+                    android:layout_centerVertical="true"
+                    app:showText="true"
+                    style="@style/switchStyle"
+                    android:theme="@style/switchStyle"
+                    app:theme="@style/switchStyle"
+                    app:switchTextAppearance="@style/SwitchTextAppearance"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_toLeftOf="@id/scNotification">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/logo_notification" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/receive_notification"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/llChangeLaguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/selector_option"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:paddingLeft="@dimen/paddingLeft_layout_screen"
+                android:paddingRight="@dimen/paddingLeft_layout_screen"
+                android:paddingTop="@dimen/appbar_padding_top"
+                android:paddingBottom="@dimen/appbar_padding_top"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/logo_earth" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_language"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSignOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/paddingLeft_layout_screen"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:text="@string/text_btnSignOut"
+                android:textStyle="bold"
+                android:textColor="@color/textColor_btnComplete"
+                android:background="@drawable/round_bg_button1"
+                android:layout_marginBottom="@dimen/paddingRight_layout_screen"/>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</RelativeLayout>

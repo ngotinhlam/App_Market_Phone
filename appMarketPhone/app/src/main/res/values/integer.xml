@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="time_wait_welcome_screen">2000</integer>
+
+    <!--Thong so load anh Picasso-->
+    <integer name="image_width_pixel">256</integer>
+    <integer name="image_height_pixel">256</integer>
+    
+    <!--Thong so crop image-->
+    <integer name="ratio_x">1</integer>
+    <integer name="ratio_y">1</integer>
+    <integer name="ouput_width_pixel">256</integer>
+    <integer name="ouput_height_pixel">256</integer>
+</resources>

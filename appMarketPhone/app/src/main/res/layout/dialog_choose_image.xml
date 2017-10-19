@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#00000000"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:id="@+id/llTakePhoto"
+        android:clickable="true"
+        android:background="@drawable/selector_choose_image"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <ImageView
+            android:layout_width="@dimen/size_avatar"
+            android:layout_height="60dp"
+            android:src="@drawable/logo_camera"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/take_photo"
+            android:textSize="@dimen/text_size_title"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/text_size_title"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llChooseImageGallery"
+        android:clickable="true"
+        android:background="@drawable/selector_choose_image"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/text_size_title"
+        android:paddingLeft="20dp">
+
+        <ImageView
+            android:layout_width="@dimen/size_avatar"
+            android:layout_height="50dp"
+            android:src="@drawable/logo_gallery"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_image_from_gallery"
+            android:textSize="@dimen/text_size_title"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/text_size_title"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</LinearLayout>

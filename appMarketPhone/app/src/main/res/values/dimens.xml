@@ -1,0 +1,50 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--Layout-->
+    <dimen name="paddingTop_layout_screen">10dp</dimen>
+    <dimen name="paddingLeft_layout_screen">20dp</dimen>
+    <dimen name="paddingRight_layout_screen">20dp</dimen>
+
+    <!--Man hinh chao-->
+    <dimen name="textSize_welcome">30dp</dimen>
+    <dimen name="marginTop_text_welcome">30dp</dimen>
+
+    <!--Cua so dang ky-->
+    <dimen name="textSizetvTitleSignUp">30dp</dimen>
+    <dimen name="textSize_btnComplete">20dp</dimen>
+
+    <!--Cua so dang nhap-->
+    <dimen name="textSizetvTitleSignIn">30dp</dimen>
+    <dimen name="textSize_btnLogin">20dp</dimen>
+    <dimen name="textSize_btnForgotPassword">15dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!--Kich thuoc ImageView avatar-->
+    <dimen name="size_avatar">80dp</dimen>
+    <dimen name="size_small_avatar">50dp</dimen>
+    <dimen name="size_button_clear_image">30dp</dimen>
+
+    <!--Cua so profile-->
+    <dimen name="textSize_tvProfileName">20sp</dimen>
+    <dimen name="text_size_information">15sp</dimen>
+
+    <!--Cua so cai dat thong tin-->
+    <dimen name="size_logo_back">20dp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_display_name">15sp</dimen>
+
+    <!--Item san pham-->
+    <dimen name="size_image_product">100dp</dimen>
+    <dimen name="textSize_tvTitleProductItem">17sp</dimen>
+
+    <!--Chi tiet bai dang-->
+    <dimen name="textSize_tvTitleProductSaleDetail">18sp</dimen>
+    <dimen name="textSize_tvPriceProductSaleDetail">15sp</dimen>
+    <dimen name="textSize_tvDisplayNameSaleDetail">15sp</dimen>
+    <dimen name="size_small_icon">20dp</dimen>
+
+</resources>

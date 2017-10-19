@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_news"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nguyen.thanhlong.chosmartphone.MyNewsActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background_main">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/appbar_padding_top"
+        android:background="@drawable/bg_gradient_2">
+
+        <ImageView
+            android:id="@+id/ivBackMyNews"
+            android:layout_width="@dimen/size_logo_back"
+            android:layout_height="@dimen/size_logo_back"
+            android:src="@drawable/logo_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_my_news"
+            android:textColor="@color/color_title"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size_title"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lvProductMyNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/appbar_padding_top"
+        android:dividerHeight="@dimen/appbar_padding_top"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:divider="@color/transparent"
+        android:background="@color/transparent"
+        android:layout_margin="@dimen/appbar_padding_top"/>
+
+</LinearLayout>

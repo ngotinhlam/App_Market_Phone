@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit_profile_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main">
+
+    <RelativeLayout
+        android:id="@+id/rl5"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/appbar_padding_top"
+        android:background="@drawable/bg_gradient_2">
+
+        <ImageView
+            android:id="@+id/ivBackEditProfile"
+            android:layout_width="@dimen/size_logo_back"
+            android:layout_height="@dimen/size_logo_back"
+            android:src="@drawable/logo_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_edit_profile"
+            android:textColor="@color/color_title"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size_title"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl6"
+        android:layout_below="@id/rl5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:paddingLeft="@dimen/paddingLeft_layout_screen"
+        android:paddingRight="@dimen/paddingRight_layout_screen">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civAvatarEditProfile"
+                android:layout_width="@dimen/size_avatar"
+                android:layout_height="@dimen/size_avatar"
+                android:src="@drawable/logo_no_avatar" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/paddingLeft_layout_screen">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_name"/>
+
+                <TextView
+                    android:id="@+id/tvNameEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_display_name"
+                    android:layout_marginRight="25dp" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivEditDisplayNameEditProfile"
+            android:layout_width="@dimen/size_logo_back"
+            android:layout_height="@dimen/size_logo_back"
+            android:src="@drawable/logo_edit"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@id/rl6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:padding="@dimen/appbar_padding_top"
+                android:clickable="true"
+                android:background="@drawable/selector_option">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_etPhoneSignUp"/>
+
+                    <TextView
+                        android:id="@+id/tvPhoneNumberEditProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="@dimen/text_size_information"/>
+
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivEditPhoneNumberEditProfile"
+                    android:layout_width="@dimen/size_logo_back"
+                    android:layout_height="@dimen/size_logo_back"
+                    android:src="@drawable/logo_edit"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:background="@drawable/selector_option"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:padding="@dimen/appbar_padding_top">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_etEmailSignUp"/>
+
+                <TextView
+                    android:id="@+id/tvEmailEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_information"
+                    android:layout_marginRight="@dimen/paddingRight_layout_screen"/>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:padding="@dimen/appbar_padding_top"
+                android:clickable="true"
+                android:background="@drawable/selector_option">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_etAddressSignUp"/>
+
+                    <TextView
+                        android:id="@+id/tvAddressEditProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="@dimen/text_size_information"
+                        android:layout_marginRight="25dp" />
+
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivEditAddressEditProfile"
+                    android:layout_width="@dimen/size_logo_back"
+                    android:layout_height="@dimen/size_logo_back"
+                    android:src="@drawable/logo_edit"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlChangePasswordEditProfile"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_option"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:padding="@dimen/appbar_padding_top"
+                android:layout_marginBottom="@dimen/paddingRight_layout_screen">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_etPasswordSignUp"/>
+
+                    <TextView
+                        android:id="@+id/tvPasswordProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="**********"
+                        android:textColor="#000"
+                        android:textSize="@dimen/text_size_information"/>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/size_logo_back"
+                    android:layout_height="@dimen/size_logo_back"
+                    android:src="@drawable/logo_foward"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

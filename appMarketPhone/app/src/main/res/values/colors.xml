@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Man hinh chao-->
+    <color name="textColor_welcome">#fff</color>
+
+    <!--Tab-->
+    <color name="tabTextColor_tabLayout">#000</color>
+    <color name="tabBackground_tabLayout">#123ad9</color>
+    <color name="tabSelectedTextColor_tabLayout">#ffffff</color>
+
+    <!--Cua so dang ky-->
+    <color name="background_btnComplete">#ca7b57</color>
+    <color name="textColor_btnComplete">#fff</color>
+
+    <!--Cua so dang nhap-->
+    <color name="background_btnLogin">#ca7b57</color>
+    <color name="textColor_btnLogin">#ffffff</color>
+    <color name="background_btnFortgotPassword">#48ffffff</color>
+    <color name="textColor_btnFortgotPassword">#000</color>
+    <color name="textColor_btnSignUp">#fff</color>
+    <color name="background_btnSignUp">#5adf9a</color>
+
+    <!--Cua so profile-->
+    <color name="option_on">#b7b5b5</color>
+    <color name="option_off">#80ffffff</color>
+
+    <!--Cua so cai dat thong tin-->
+    <color name="background_title">#e6d83e</color>
+    <color name="color_title">#fff</color>
+
+    <!--Chi tiet bai ban-->
+    <color name="bg_call_sms_selected">#e98c00</color>
+    <color name="bg_call_sms_unselected">#a73c3c56</color>
+
+    <!--Special color-->
+    <color name="transparent">#00ffffff</color>
+    <color name="green">#0f0</color>
+    <color name="black">#000</color>
+    <color name="red">#f00</color>
+</resources>

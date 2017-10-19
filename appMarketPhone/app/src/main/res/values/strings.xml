@@ -1,0 +1,172 @@
+<resources>
+    <string name="title_activity_main2"></string>
+    <string name="app_name">Chợ Smartphone</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Xac nhan thoat ung dung-->
+    <string name="confirm_exit_dialog">Bạn có muốn thoát ứng dụng không</string>
+    <string name="message_exit_dialog">Đồng ý để thoát</string>
+    <string name="agree_exit_dialog">Đồng ý</string>
+    <string name="disagree_exit_dialog">Không</string>
+
+    <!--Xac nhan dang xuat-->
+    <string name="confirm_sign_out_dialog">Bạn có muốn đăng xuất không</string>
+    <string name="message_sign_out_dialog">Đồng ý để đăng xuất</string>
+    <string name="agree_sign_out_dialog">Đồng ý</string>
+    <string name="disagree_sign_out_dialog">Không</string>
+
+    <!--Xu ly dang ky-->
+    <string name="empty_warning">Thông tin phải đầy đủ không bỏ trống</string>
+    <string name="password_not_enough_characters">Mật khẩu tối thiểu 6 ký tự</string>
+    <string name="retype_the_wrong_password">Nhập lại mật khẩu không đúng</string>
+    <string name="sign_up_success">Đăng ký thành công</string>
+    <string name="sign_up_failure">Đăng ký thất bại</string>
+    <string name="email_invalid">Email không hợp lệ</string>
+    <string name="email_exist">Email này đã tồn tại</string>
+    <string name="phone_number_invalid">Số điện thoại không hợp lệ</string>
+
+    <!--Xu ly dang nhap-->
+    <string name="email_field_empty">Vui lòng nhập email</string>
+    <string name="password_field_empty">Vui lòng nhập mật khẩu</string>
+    <string name="account_invalid">Email hoặc mật khẩu không đúng</string>
+
+    <!--Xu ly thay doi mat khau-->
+    <string name="change_password_success">Đổi mật khẩu thành công</string>
+    <string name="change_password_fail">Đổi mật khẩu thất bại</string>
+    <string name="log_back_to_change_password">Gặp phải vấn đề xác thực, vui lòng đăng nhập lại để đổi mật khẩu</string>
+
+    <!--Xu ly dang tin-->
+    <string name="title_product_field_empty">Tiêu đề sản phẩm không được bỏ trống</string>
+    <string name="price_product_field_empty">Vui lòng nhập số tiền muốn bán</string>
+    <string name="post_success">Đăng tin bán thành công</string>
+    <string name="post_fail">Đăng tin bán thất bại</string>
+
+    <!--Thong bao dialog-->
+    <string name="title_close_dialog">Đóng</string>
+    <string name="title_send_mail_reset_password">Một email đã được gửi đến địa chỉ email của bạn để lấy lại mật khẩu</string>
+    <string name="title_send_mail_reset_password_fail">Không thể gửi email lấy lại mật khẩu vào lúc này, vui lòng thử lại sau</string>
+    <string name="hint_input_text_here">Nhập thông tin thay đổi</string>
+    <string name="take_photo">Chụp hình</string>
+    <string name="choose_image_from_gallery">Chọn hình từ thư viện</string>
+
+    <!--Thong bao Progress Dialog-->
+    <string name="title_loading">Đang xử lý</string>
+    <string name="title_getting_information">Đang lấy thông tin cá nhân</string>
+
+    <!--Class LoadMainActivity-->
+    <string name="title_progress_dialog">Đăng nhập</string>
+    <string name="content_progress_dialog">Đang tải dữ liệu, vui lòng đợi</string>
+
+    <!--Xu ly kiem tra ket noi internet-->
+    <string name="disconnected_internet">Không có kết nối mạng</string>
+    <string name="connected_internet">Đã kết nối mạng</string>
+
+    <!--Man hinh chao-->
+    <string name="text_welcome">Chợ công nghệ</string>
+
+    <!--Cua so dang ky-->
+    <string name="text_tvTitleSignUp">ĐĂNG KÝ</string>
+    <string name="hint_etNameSignUp">Tên tài khoản</string>
+    <string name="hint_etPhoneSignUp">Số điện thoại</string>
+    <string name="hint_etAddressSignUp">Địa chỉ</string>
+    <string name="hint_etEmailSignUp">Email</string>
+    <string name="hint_etPasswordSignUp">Mật khẩu</string>
+    <string name="hint_etRetypePasswordSignUp">Nhập lại mật khẩu</string>
+    <string name="text_btnComplete">Hoàn tất</string>
+
+    <!--Cua so dang nhap-->
+    <string name="text_tvTitleSignIn">ĐĂNG NHẬP</string>
+    <string name="hint_etEmailSignIn">Email</string>
+    <string name="hint_etPasswordSignIn">Mật khẩu</string>
+    <string name="text_btnLogin">Đăng nhập</string>
+    <string name="text_btnForgotPassword">Quên mật khẩu</string>
+    <string name="text_btnLoginWithFacebook">Đăng nhập bằng</string>
+    <string name="text_btnSignUp">Đăng ký</string>
+
+    <!--Cua so thay doi mat khau-->
+    <string name="text_tvTitleChangePassword">ĐỔI MẬT KHẨU</string>
+    <string name="hint_etOldPasswordChangePassword">Mật khẩu cũ</string>
+    <string name="hint_etNewPasswordChangePassword">Mật khẩu mới</string>
+    <string name="hint_etRetypePasswordChangePassword">Xác nhận mật khẩu mới</string>
+    <string name="text_btnAgreeChangePassword">Đổi mật khẩu</string>
+
+    <!--Cua so quen mat khau-->
+    <string name="text_tvTitlePasswordReset">QUÊN MẬT KHẨU</string>
+    <string name="hint_etEmailPasswordReset">Email</string>
+    <string name="text_btnResetPassword">Đặt lại mật khẩu</string>
+    <string name="email_not_exist">Email này không tồn tại</string>
+    <string name="firebase_error_email_invalid">An internal error has occurred. [ INVALID_EMAIL ]</string>
+    <string name="firebase_error_email_not_exist">There is no user record corresponding to this identifier. The user may have been deleted.</string>
+    <string name="title_activity_abc">abc</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!--Cua so profile-->
+    <string name="favorite">Tin yêu thích</string>
+    <string name="my_news">Đang bán</string>
+    <string name="transaction_history">Lịch sử giao dịch</string>
+    <string name="search_save">Tìm kiếm đã lưu</string>
+    <string name="view_profile">Xem trang cá nhân của bạn</string>
+    <string name="text_btnSignOut">Đăng xuất</string>
+    <string name="load_avatar_fail">Không tải được ảnh đại diện</string>
+    <string name="load_avatar_success">Đã cập nhật ảnh đại diện</string>
+    <string name="change_language">Thay đổi ngôn ngữ</string>
+    <string name="receive_notification">Nhận thông báo khi có tin mới</string>
+
+    <!--Cua so cai dat thong tin-->
+    <string name="title_edit_profile">Cài đặt thông tin</string>
+    <string name="display_name">Tên hiển thị</string>
+    <string name="text_btnSaveDisplayName">Lưu</string>
+    <string name="change_display_name_succes">Đổi tên hiển thị thành công</string>
+    <string name="change_display_name_fail">Đổi tên hiển thị thất bại</string>
+    <string name="change_phone_number_succes">Đổi số điện thoại thành công</string>
+    <string name="change_phone_number_fail">Đổi số điện thoại thất bại</string>
+    <string name="change_address_succes">Đổi địa chỉ thành công</string>
+    <string name="change_address_fail">Đổi địa chỉ thất bại</string>
+    <string name="change_url_avatar_success">Cập nhật ảnh đại diện thành công</string>
+    <string name="change_url_avatar_fail">Cập nhật ảnh đại diện thất bại</string>
+    <string name="change_avatar_fail">Không thể đổi ảnh đại diện</string>
+
+    <!--Cua so dang bai-->
+    <string name="title_post_sale">ĐĂNG BÁN</string>
+    <string name="hint_etTitleProductPostSale">Tiêu đề sản phẩm</string>
+    <string name="hint_etPriceProductPostSale">Giá</string>
+    <string name="currency_unit">VNĐ</string>
+    <string name="hint_etDescriptionProductPostSale">Mô tả</string>
+    <string name="text_btnAgreePostSale">Đăng bán</string>
+
+    <!--Cua so sua tin-->
+    <string name="title_edit_sale">Sửa bài</string>
+    <string name="text_btnAgreeEditSale">Cập nhật</string>
+    <string name="edit_sale_news_succes">Sửa tin thành công</string>
+    <string name="edit_sale_news_fail">Sửa tin thất bại</string>
+
+    <!--Cua so tim kiem-->
+    <string name="queryHint_svProduct">Tìm kiếm</string>
+
+    <!--Cua so tin dang ban-->
+    <string name="title_my_news">Đang bán</string>
+
+    <!--Cua so tin yeu thich-->
+    <string name="title_favorite_news">Tin yêu thích</string>
+
+    <!--Chi tiet bai ban-->
+    <string name="title_call">Gọi điện</string>
+    <string name="title_sms">Gửi SMS</string>
+    <string name="key_intent_putExtra_product_id">product_id</string> <!--Khong dich-->
+    <string name="flag_no_image">no_image</string> <!--Khong dich-->
+    <string name="sale_has_been_deleted">Tin đã bị xóa</string>
+
+    <!--Menu sua, xoa tin-->
+    <string name="edit_sale_news">Sửa tin</string>
+    <string name="remove_sale_news">Xóa tin</string>
+    <string name="confirm_remove_sale_news_dialog">Bạn có muốn xóa tin không</string>
+    <string name="message_remove_sale_news_dialog">Đồng ý để xóa tin</string>
+    <string name="can_not_edit_sale_news">Bạn không thể sửa tin của người khác</string>
+    <string name="can_not_remove_sale_news">Bạn không thể xóa tin của người khác</string>
+    <string name="remove_sale_news_success">Xóa tin thành công</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

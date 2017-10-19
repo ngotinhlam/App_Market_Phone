@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_main">
+
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/text_size_information"
+        android:background="@drawable/bg_gradient_2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/ivBackSaleDetail"
+            android:layout_width="@dimen/size_logo_back"
+            android:layout_height="@dimen/size_logo_back"
+            android:src="@drawable/logo_back"/>
+
+        <ImageView
+            android:id="@+id/ivMenuSaleDetail"
+            android:layout_width="@dimen/size_logo_back"
+            android:layout_height="@dimen/size_logo_back"
+            android:src="@drawable/logo_menu"
+            android:layout_alignParentRight="true"/>
+
+        <ImageView
+            android:id="@+id/ivFollowSaleDetail"
+            android:layout_width="@dimen/size_logo_back"
+            android:layout_height="@dimen/size_logo_back"
+            android:src="@drawable/logo_heart_unselected"
+            android:layout_toLeftOf="@id/ivMenuSaleDetail"
+            android:layout_marginRight="@dimen/paddingLeft_layout_screen"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llIncludeSaleDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/llCallSaleDetail"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_call_sms"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/appbar_padding_top">
+
+            <ImageView
+                android:layout_width="@dimen/size_small_icon"
+                android:layout_height="@dimen/size_small_icon"
+                android:src="@drawable/logo_call"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_call"
+                android:textColor="@color/green"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSmsSaleDetail"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_call_sms"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/appbar_padding_top">
+
+            <ImageView
+                android:layout_width="@dimen/size_small_icon"
+                android:layout_height="@dimen/size_small_icon"
+                android:src="@drawable/logo_sms"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_sms"
+                android:textColor="@color/green"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl1"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/activity_sale_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.nguyen.thanhlong.chosmartphone.SaleDetail"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/appbar_padding_top">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vpImageSaleDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/ciImageSaleDetail"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="22dp" />
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/ciImageSaleDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/appbar_padding_top" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvTitleProductSaleDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiêu đề sản phẩm"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSize_tvTitleProductSaleDetail"
+                android:layout_marginLeft="@dimen/appbar_padding_top"/>
+
+            <TextView
+                android:id="@+id/tvPriceProductSaleDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá"
+                android:textColor="@color/red"
+                android:textSize="@dimen/textSize_tvPriceProductSaleDetail"
+                android:layout_marginLeft="@dimen/appbar_padding_top"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/black"
+                android:layout_margin="@dimen/appbar_padding_top"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/appbar_padding_top">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civAvatarSaleDetail"
+                    android:layout_width="@dimen/size_small_avatar"
+                    android:layout_height="@dimen/size_small_avatar"
+                    android:src="@drawable/logo_no_avatar"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/appbar_padding_top"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvDisplayNameSaleDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tên người bán"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textSize_tvDisplayNameSaleDetail"/>
+
+                    <TextView
+                        android:id="@+id/tvDatePostProductSaleDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ngày đăng"
+                        android:textSize="@dimen/textSize_tvDisplayNameSaleDetail"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDescribeSaleDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="asdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf123"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:paddingLeft="@dimen/appbar_padding_top"
+                android:paddingRight="@dimen/appbar_padding_top"
+                android:layout_marginBottom="@dimen/paddingRight_layout_screen"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/black"
+                android:layout_margin="@dimen/appbar_padding_top"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginRight="@dimen/appbar_padding_top"
+                android:layout_marginBottom="@dimen/paddingLeft_layout_screen">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_etAddressSignUp"
+                    android:textSize="@dimen/textSize_tvDisplayNameSaleDetail"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tvAddressProductSaleDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="asdasdadasdasdasdasdadasdadasdasdasdadsasdasdasdasdasdasdasdasdasdasdas"
+                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

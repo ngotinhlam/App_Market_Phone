@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@color/transparent">
+
+    <Button
+        android:id="@+id/btnVI"
+        android:layout_width="@dimen/size_avatar"
+        android:layout_height="50dp"
+        android:background="@drawable/flag_vi"
+        android:layout_marginRight="@dimen/appbar_padding_top"/>
+
+    <Button
+        android:id="@+id/btnENG"
+        android:layout_width="@dimen/size_avatar"
+        android:layout_height="50dp"
+        android:background="@drawable/flag_eng"
+        android:layout_marginLeft="@dimen/appbar_padding_top"/>
+
+</LinearLayout>

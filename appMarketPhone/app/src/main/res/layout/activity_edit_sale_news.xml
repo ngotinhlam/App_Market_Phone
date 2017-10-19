@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_main">
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/appbar_padding_top"
+        android:background="@drawable/bg_gradient_2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/ivBackEditSale"
+            android:layout_width="@dimen/size_logo_back"
+            android:layout_height="@dimen/size_logo_back"
+            android:src="@drawable/logo_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_edit_sale"
+            android:textColor="@color/color_title"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size_title"/>
+
+    </RelativeLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl2">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/paddingRight_layout_screen"
+            android:paddingLeft="@dimen/paddingRight_layout_screen"
+            android:paddingRight="@dimen/paddingRight_layout_screen">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/paddingRight_layout_screen"
+                android:layout_marginBottom="@dimen/paddingRight_layout_screen"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/ivImageProduct1EditSale"
+                        android:layout_width="@dimen/size_avatar"
+                        android:layout_height="@dimen/size_avatar"
+                        android:layout_margin="@dimen/appbar_padding_top"
+                        android:background="@drawable/selector_image_view"
+                        android:clickable="true"
+                        android:src="@drawable/logo_camera" />
+
+                    <ImageView
+                        android:clickable="true"
+                        android:id="@+id/ivImageProduct2EditSale"
+                        android:layout_width="@dimen/size_avatar"
+                        android:layout_height="@dimen/size_avatar"
+                        android:src="@drawable/logo_camera"
+                        android:layout_margin="@dimen/appbar_padding_top"
+                        android:background="@drawable/selector_image_view" />
+
+                    <ImageView
+                        android:id="@+id/ivImageProduct3EditSale"
+                        android:layout_width="@dimen/size_avatar"
+                        android:layout_height="@dimen/size_avatar"
+                        android:layout_margin="@dimen/appbar_padding_top"
+                        android:background="@drawable/selector_image_view"
+                        android:clickable="true"
+                        android:src="@drawable/logo_camera" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btnClearImage1EditSale"
+                        android:layout_width="@dimen/size_button_clear_image"
+                        android:layout_height="@dimen/size_button_clear_image"
+                        android:background="@drawable/logo_delete"
+                        android:layout_marginRight="65dp"/>
+
+                    <Button
+                        android:id="@+id/btnClearImage2EditSale"
+                        android:layout_width="@dimen/size_button_clear_image"
+                        android:layout_height="@dimen/size_button_clear_image"
+                        android:background="@drawable/logo_delete"
+                        android:layout_marginRight="65dp"/>
+
+                    <Button
+                        android:id="@+id/btnClearImage3EditSale"
+                        android:layout_width="@dimen/size_button_clear_image"
+                        android:layout_height="@dimen/size_button_clear_image"
+                        android:background="@drawable/logo_delete" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etTitleProductEditSale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_etTitleProductPostSale"
+                    android:textStyle="bold"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/paddingLeft_layout_screen"
+                    android:layout_centerVertical="true">
+
+                    <EditText
+                        android:id="@+id/etPriceProductEditSale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_etPriceProductPostSale"
+                        android:inputType="number"
+                        android:textStyle="bold"
+                        android:maxLength="25"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/currency_unit"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/appbar_padding_top"
+                    android:layout_marginRight="@dimen/appbar_padding_top"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/paddingLeft_layout_screen"/>
+
+            </RelativeLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etDescriptionProductEditSale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_etDescriptionProductPostSale"
+                    android:textStyle="bold"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnAgreeEditSale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_btnAgreeEditSale"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:background="@drawable/round_bg_button1"
+                android:textSize="@dimen/textSize_btnLogin"
+                android:textColor="@color/textColor_btnLogin"
+                android:layout_marginBottom="@dimen/paddingLeft_layout_screen"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

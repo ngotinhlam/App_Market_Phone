@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="250dp"
+    android:gravity="center_horizontal"
+    android:paddingTop="50dp">
+
+    <LinearLayout
+        android:id="@+id/llEditSaleNews"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/appbar_padding_top"
+        android:background="@drawable/selector_menu_sale_news">
+
+        <ImageView
+            android:layout_width="@dimen/size_button_clear_image"
+            android:layout_height="@dimen/size_button_clear_image"
+            android:src="@drawable/logo_edit_sale_news"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_sale_news"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/text_size_title"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRemoveSaleNews"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/appbar_padding_top"
+        android:background="@drawable/selector_menu_sale_news">
+
+        <ImageView
+            android:layout_width="@dimen/size_button_clear_image"
+            android:layout_height="@dimen/size_button_clear_image"
+            android:src="@drawable/logo_delete_sale_news"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remove_sale_news"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/text_size_title"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+
+    </LinearLayout>
+
+</LinearLayout>
