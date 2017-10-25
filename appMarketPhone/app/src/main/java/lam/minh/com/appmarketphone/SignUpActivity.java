@@ -1,6 +1,10 @@
 package lam.minh.com.appmarketphone;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,7 +19,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.IOException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import handle.DatabaseFirebase;
 import handle.Validate;
 import object.Account;
@@ -25,7 +34,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     ImageView ivBack;
     EditText etName, etPhone, etAddress, etEmail, etPassword, etRetypePassword;
     Button btnSignUp;
+    CircleImageView civAvatar;
     DatabaseFirebase df;
+    Bitmap bitmapAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +44,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_up_screen);
         initView();
 
+        df = new DatabaseFirebase();
     }
 
     public void initView() {
@@ -43,17 +55,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         etEmail = (EditText) findViewById(R.id.etEmailSignUp);
         etPassword = (EditText) findViewById(R.id.etPasswordSignUp);
         etRetypePassword = (EditText) findViewById(R.id.etRetypePasswordSignUp);
+        civAvatar = (CircleImageView) findViewById(R.id.civAvatarSignUp);
+        civAvatar.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         btnSignUp = (Button) findViewById(R.id.btnComplete);
         ivBack.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
+        civAvatar.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //Nhấn back
             case R.id.ivBackSignUp:
                 finish();
                 break;
+            //Nhấn hoàn tất đăng ký
             case R.id.btnComplete:
                 String name = etName.getText().toString().trim();
                 final String phone = etPhone.getText().toString().trim();
@@ -89,7 +106,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                         Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                                         Account account = new Account(user.getUid(), email, address, phone, "");
-                                        df.addAccount(account);
+                                        df.addAccount(account, bitmapAvatar);
                                     } else {
                                         Log.d("error", task.getException().getMessage());
                                     }
@@ -97,6 +114,31 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             });
                 }
                 break;
+            //Nhấn chọn ảnh đại diện
+            case R.id.civAvatarSignUp:
+                CropImage.activity(null).setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(this);
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri avatarUri = result.getUri();
+                try {
+                    //Lấy bitmap từ một URI
+                    bitmapAvatar = MediaStore.Images.Media.getBitmap(getContentResolver(), avatarUri);
+                    //Gán ảnh cho Circle Image View
+                    civAvatar.setImageBitmap(bitmapAvatar);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                Log.d("error", error.toString());
+            }
         }
     }
 }

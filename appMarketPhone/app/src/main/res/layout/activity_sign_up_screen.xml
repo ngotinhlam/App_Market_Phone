@@ -162,6 +162,12 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civAvatarSignUp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/icon_user"/>
+
         <Button
             android:id="@+id/btnComplete"
             android:layout_width="match_parent"

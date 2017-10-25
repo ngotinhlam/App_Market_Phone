@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in_screen);
         initView();
-
     }
 
     public void initView() {
