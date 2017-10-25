@@ -1,5 +1,6 @@
 package lam.minh.com.appmarketphone;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -29,7 +30,7 @@ import handle.DatabaseFirebase;
 import handle.Validate;
 import object.Account;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView ivBack;
     EditText etName, etPhone, etAddress, etEmail, etPassword, etRetypePassword;
@@ -37,13 +38,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     CircleImageView civAvatar;
     DatabaseFirebase df;
     Bitmap bitmapAvatar;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_screen);
         initView();
-
+        progressDialog = new ProgressDialog(this);
         df = new DatabaseFirebase();
     }
 
@@ -78,7 +80,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 final String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 String retypepassword = etRetypePassword.getText().toString().trim();
-                if (name.equals("")||phone.equals("")||address.equals("")||email.equals("")||password.equals("")||retypepassword.equals("")) {
+                if (name.equals("") || phone.equals("") || address.equals("") || email.equals("") || password.equals("") || retypepassword.equals("")) {
                     Toast.makeText(this, "Phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else {
                     if (!Validate.isValidPhoneNumber(phone)) {
@@ -97,6 +99,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(this, "Nhập lại mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    //Hiện progress dialog
+                    progressDialog.setMessage("Đang xử lý");
+                    progressDialog.show();
                     FirebaseAuth mAuth = FirebaseAuth.getInstance();
                     mAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
@@ -104,19 +109,21 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                        Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                                         Account account = new Account(user.getUid(), email, address, phone, "");
                                         df.addAccount(account, bitmapAvatar);
+                                        Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                        clearInfo();
                                     } else {
                                         Log.d("error", task.getException().getMessage());
                                     }
+                                    progressDialog.dismiss(); //Đóng progress dialog
                                 }
                             });
                 }
                 break;
             //Nhấn chọn ảnh đại diện
             case R.id.civAvatarSignUp:
-                CropImage.activity(null).setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(this);
+                CropImage.activity(null).setAspectRatio(1, 1).setCropShape(CropImageView.CropShape.OVAL).start(this);
                 break;
         }
     }
@@ -141,4 +148,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
+
+    public void clearInfo() {
+        etName.setText("");
+        etPhone.setText("");
+        etAddress.setText("");
+        etEmail.setText("");
+        etPassword.setText("");
+        etRetypePassword.setText("");
+        civAvatar.setImageResource(R.drawable.icon_user);
+        bitmapAvatar = null;
+    }
+
 }

@@ -35,28 +35,34 @@ public class DatabaseFirebase {
 
     public void addAccount(final Account account, Bitmap bitmap) {
         final String uid = account.getUid();
+        final DatabaseReference mUsers = rootDatabase.child("users").child(uid);
         StorageReference mAvatars = rootStorage.child("avatar").child("avatar_" + uid + ".jpg");
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
+        if (bitmap != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data = baos.toByteArray();
 
-        UploadTask uploadTask = mAvatars.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) { //Upload avatar thất bại
-                Log.d("error", exception.getMessage().toString());
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) { //Upload avatar thành công
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                String url = downloadUrl.toString();
-                account.setAvatar(url);
-                DatabaseReference mUsers = rootDatabase.child("users").child(uid);
-                mUsers.setValue(account);
-            }
-        });
+            UploadTask uploadTask = mAvatars.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) { //Upload avatar thất bại
+                    Log.d("error", exception.getMessage().toString());
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) { //Upload avatar thành công
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    String url = downloadUrl.toString();
+                    account.setAvatar(url);
+                    mUsers.setValue(account);
+                }
+            });
+        } else {
+            mUsers.setValue(account);
+        }
+
+
     }
 }
