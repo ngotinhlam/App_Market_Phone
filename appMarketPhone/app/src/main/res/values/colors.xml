@@ -34,6 +34,7 @@
 
     <!--Special color-->
     <color name="transparent">#00ffffff</color>
+    <color name="white">#fff</color>
     <color name="green">#0f0</color>
     <color name="black">#000</color>
     <color name="red">#f00</color>

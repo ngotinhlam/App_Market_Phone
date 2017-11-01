@@ -1,13 +1,13 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.nguyen.thanhlong.chosmartphone.PostSaleFragment"
         android:orientation="vertical"
         android:paddingTop="@dimen/paddingRight_layout_screen"
         android:paddingLeft="@dimen/paddingRight_layout_screen"
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_post_sale"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_size_title"
             android:layout_gravity="center"
             android:textStyle="bold"/>
@@ -98,14 +98,16 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white">
 
             <EditText
                 android:id="@+id/etTitleProductPostSale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_etTitleProductPostSale"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -117,7 +119,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/paddingLeft_layout_screen"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:textColorHint="@color/white">
 
                 <EditText
                     android:id="@+id/etPriceProductPostSale"
@@ -125,8 +128,9 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_etPriceProductPostSale"
                     android:inputType="number"
+                    android:maxLength="25"
                     android:textStyle="bold"
-                    android:maxLength="25"/>
+                    android:textColor="@color/white"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -139,20 +143,23 @@
                 android:layout_marginLeft="@dimen/appbar_padding_top"
                 android:layout_marginRight="@dimen/appbar_padding_top"
                 android:textStyle="bold"
-                android:textSize="@dimen/paddingLeft_layout_screen"/>
+                android:textSize="@dimen/paddingLeft_layout_screen"
+                android:textColor="@color/white"/>
 
         </RelativeLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white">
 
             <EditText
                 android:id="@+id/etDescriptionProductPostSale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_etDescriptionProductPostSale"
-                android:textStyle="bold"/>
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
         </android.support.design.widget.TextInputLayout>
 

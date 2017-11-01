@@ -21,12 +21,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import dialog.NotificationDialog;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText etEmail, etPassword;
     Button btnLogin, btnForgotPass, btnSignUp;
     FirebaseAuth mAuth;
     ProgressDialog progressDialog;
+    NotificationDialog notificationDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initView();
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
+        notificationDialog = new NotificationDialog(this);
     }
 
     public void initView() {
@@ -55,11 +59,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 if (email.equals("")) {
-                    Toast.makeText(this, "Hãy nhập email", Toast.LENGTH_SHORT).show();
+                    notificationDialog.showMessage("Thông báo", "Hãy nhập email");
                     return;
                 }
                 if (password.equals("")) {
-                    Toast.makeText(this, "Hãy nhập password", Toast.LENGTH_SHORT).show();
+                    notificationDialog.showMessage("Thông báo", "Hãy nhập mật khẩu");
                     return;
                 }
                 //Hiện progress dialog
@@ -71,20 +75,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) { //Đăng nhập thành công
-                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 } else { //Đăng nhập thất bại
                                     String error = task.getException().getMessage().trim();
                                     Log.d("error", error);
                                     switch (error) {
                                         case "The password is invalid or the user does not have a password.":
-                                            Toast.makeText(LoginActivity.this, "Mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                                            notificationDialog.showMessage("Thông báo", "Mật khẩu không đúng");
                                             break;
                                         case "The email address is badly formatted.":
-                                            Toast.makeText(LoginActivity.this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+                                            notificationDialog.showMessage("Thông báo", "Email không hợp lệ");
                                             break;
                                         case "There is no user record corresponding to this identifier. The user may have been deleted.":
-                                            Toast.makeText(LoginActivity.this, "Không tìm thấy email", Toast.LENGTH_SHORT).show();
+                                            notificationDialog.showMessage("Thông báo", "Không tìm thấy email");
                                             break;
                                         default:
                                             break;
