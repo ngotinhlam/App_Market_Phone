@@ -203,7 +203,7 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
     public static String formatDecimal(String value) {
         if (!value.equals("")) {
             value = value.replace(".", "");
-            DecimalFormat df = new DecimalFormat("#,###,###,###,###,###,###,###");
+            DecimalFormat df = new DecimalFormat("#,###,###,###");
             return df.format(Double.valueOf(value));
         } else {
             return "0";
