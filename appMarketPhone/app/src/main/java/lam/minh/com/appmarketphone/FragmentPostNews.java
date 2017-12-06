@@ -1,6 +1,7 @@
 package lam.minh.com.appmarketphone;
 
 import android.app.Notification;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -51,13 +52,16 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
     Intent intent;
     DatabaseFirebase df;
     public static NotificationDialog notificationDialog;
+    public static ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post_news, container, false);
         initView(view);
-        df = new DatabaseFirebase();
+        df = new DatabaseFirebase(getActivity());
         notificationDialog = new NotificationDialog(getContext());
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setCanceledOnTouchOutside(false);
         return view;
     }
 
@@ -220,21 +224,13 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
                     notificationDialog.showMessage("Thông báo", "Phải điền đủ thông tin");
                     return;
                 }
+                progressDialog.setMessage("Đang xử lý");
+                progressDialog.show();
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                 Date date = new Date();
                 Phone phone = new Phone(id, userid, title, price, description, "", "", "", dateFormat.format(date));
                 df.addProduct(phone, bitmap1, bitmap2, bitmap3);
                 break;
-        }
-    }
-
-    public static String formatDecimal(String value) {
-        if (!value.equals("")) {
-            value = value.replace(".", "");
-            DecimalFormat df = new DecimalFormat("#,###,###,###");
-            return df.format(Double.valueOf(value));
-        } else {
-            return "0";
         }
     }
 

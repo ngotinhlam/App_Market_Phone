@@ -28,6 +28,10 @@
         <activity android:name=".PasswordResetActivity"/>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SaleDetailActivity"/>
+        <activity android:name=".EditProfileActivity"/>
+        <activity android:name=".ChangePasswordActivity"/>
+        <activity android:name=".MyNewsActivity"/>
+        <activity android:name=".EditSaleActivity"/>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
     </application>

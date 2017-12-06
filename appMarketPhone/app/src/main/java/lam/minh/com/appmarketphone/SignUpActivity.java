@@ -49,8 +49,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_up_screen);
         initView();
         progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
         notificationDialog = new NotificationDialog(this);
-        df = new DatabaseFirebase();
+        df = new DatabaseFirebase(this);
     }
 
     public void initView() {
@@ -118,8 +119,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                         notificationDialog.showMessage("Thông báo", "Đăng ký thành công");
                                         clearInfo();
                                     } else {
+                                        String error = task.getException().getMessage();
                                         Log.d("error", task.getException().getMessage());
-                                        notificationDialog.showMessage("Thông báo", "Đăng ký thất bại, vui lòng thử lại sau");
+                                        if (error.equals("The email address is already in use by another account.")) {
+                                            notificationDialog.showMessage("Thông báo", "Email này đã được đăng ký");
+                                        } else {
+                                            notificationDialog.showMessage("Thông báo", "Đăng ký thất bại, vui lòng thử lại sau");
+                                        }
                                     }
                                     progressDialog.dismiss(); //Đóng progress dialog
                                 }

@@ -1,5 +1,7 @@
 package handle;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -17,7 +19,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 
+import lam.minh.com.appmarketphone.EditSaleActivity;
 import lam.minh.com.appmarketphone.FragmentPostNews;
+import lam.minh.com.appmarketphone.R;
 import object.Account;
 import object.Phone;
 
@@ -25,9 +29,10 @@ public class DatabaseFirebase {
 
     DatabaseReference rootDatabase; //nút gốc của database
     StorageReference rootStorage; //nút gốc của storage
+    Activity activity;
 
-
-    public DatabaseFirebase() {
+    public DatabaseFirebase(Activity activity) {
+        this.activity = activity;
         rootDatabase = FirebaseDatabase.getInstance().getReference();
         rootStorage = FirebaseStorage.getInstance().getReference();
     }
@@ -94,6 +99,7 @@ public class DatabaseFirebase {
                     String url = downloadUrl.toString();
                     phone.setUrlimage1(url);
                     drPhones.setValue(phone);
+                    FragmentPostNews.progressDialog.dismiss();
                 }
             });
         }
@@ -117,6 +123,7 @@ public class DatabaseFirebase {
                     String url = downloadUrl.toString();
                     phone.setUrlimage2(url);
                     drPhones.setValue(phone);
+                    FragmentPostNews.progressDialog.dismiss();
                 }
             });
         }
@@ -140,6 +147,7 @@ public class DatabaseFirebase {
                     String url = downloadUrl.toString();
                     phone.setUrlimage3(url);
                     drPhones.setValue(phone);
+                    FragmentPostNews.progressDialog.dismiss();
                 }
             });
         }
@@ -149,12 +157,116 @@ public class DatabaseFirebase {
             public void onComplete(@NonNull Task<Void> task) {
                 FragmentPostNews.notificationDialog.showMessage("Thông báo", "Đăng sản phẩm thành công");
                 FragmentPostNews.clearInfo();
+                FragmentPostNews.progressDialog.dismiss();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.d("error", e.getMessage());
                 FragmentPostNews.notificationDialog.showMessage("Thông báo", "Đăng sản phẩm thất bại, vui lòng thử lại sau");
+            }
+        });
+    }
+
+    public void editProduct(final Phone phone, Bitmap bitmap1, Bitmap bitmap2, Bitmap bitmap3) {
+        String phoneid = phone.getId();
+        String urlimage1 = phone.getUrlimage1();
+        String urlimage2 = phone.getUrlimage2();
+        String urlimage3 = phone.getUrlimage3();
+        //Xóa hết ảnh cũ
+        rootStorage.child("images").child(phoneid + "_1.jpg").delete();
+        rootStorage.child("images").child(phoneid + "_2.jpg").delete();
+        rootStorage.child("images").child(phoneid + "_3.jpg").delete();
+        //Cập nhật lại dữ liệu mới
+        final DatabaseReference drPhones = rootDatabase.child("phones").child(phoneid);
+        StorageReference srImage1 = rootStorage.child("images").child(phoneid + "_1.jpg");
+        StorageReference srImage2 = rootStorage.child("images").child(phoneid + "_2.jpg");
+        StorageReference srImage3 = rootStorage.child("images").child(phoneid + "_3.jpg");
+
+        if (bitmap1 != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data = baos.toByteArray();
+
+            UploadTask uploadTask = srImage1.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) { //Upload ảnh thất bại
+                    Log.d("error", exception.getMessage().toString());
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) { //Upload ảnh thành công
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    String url = downloadUrl.toString();
+                    phone.setUrlimage1(url);
+                    drPhones.setValue(phone);
+                    EditSaleActivity.progressDialog.dismiss();
+                }
+            });
+        }
+
+        if (bitmap2 != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data = baos.toByteArray();
+
+            UploadTask uploadTask = srImage2.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) { //Upload avatar thất bại
+                    Log.d("error", exception.getMessage().toString());
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) { //Upload avatar thành công
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    String url = downloadUrl.toString();
+                    phone.setUrlimage2(url);
+                    drPhones.setValue(phone);
+                    EditSaleActivity.progressDialog.dismiss();
+                }
+            });
+        }
+
+        if (bitmap3 != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data = baos.toByteArray();
+
+            UploadTask uploadTask = srImage3.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) { //Upload avatar thất bại
+                    Log.d("error", exception.getMessage().toString());
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) { //Upload avatar thành công
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    String url = downloadUrl.toString();
+                    phone.setUrlimage3(url);
+                    drPhones.setValue(phone);
+                    EditSaleActivity.progressDialog.dismiss();
+                }
+            });
+        }
+
+        drPhones.setValue(phone).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                EditSaleActivity.notificationDialog.showMessage(activity.getString(R.string.title_notification), activity.getString(R.string.edit_sale_news_succes));
+                EditSaleActivity.progressDialog.dismiss();
+                activity.finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("error", e.getMessage());
+                EditSaleActivity.notificationDialog.showMessage(activity.getString(R.string.title_notification), activity.getString(R.string.edit_sale_news_fail));
             }
         });
     }

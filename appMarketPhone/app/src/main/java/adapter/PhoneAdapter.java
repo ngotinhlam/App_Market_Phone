@@ -47,8 +47,29 @@ public class PhoneAdapter extends BaseAdapter {
 
     public void addPhone(Phone phone) {
         list.add(phone);
-        Log.d("aaa", phone.getUrlimage1() + " | " + phone.getUrlimage2() + " | " + phone.getUrlimage3());
         notifyDataSetChanged();
+    }
+
+    public void editPhone(Phone phone) {
+        for (int i = 0; i < list.size(); i++) {
+            Phone p = list.get(i);
+            if (p.getId().equals(phone.getId())) {
+                list.set(i, phone);
+                notifyDataSetChanged();
+                return;
+            }
+        }
+    }
+
+    public void removePhone(Phone phone) {
+        for (int i = 0; i < list.size(); i++) {
+            Phone p = list.get(i);
+            if (p.getId().equals(phone.getId())) {
+                list.remove(i);
+                notifyDataSetChanged();
+                return;
+            }
+        }
     }
 
     class ViewHolder {

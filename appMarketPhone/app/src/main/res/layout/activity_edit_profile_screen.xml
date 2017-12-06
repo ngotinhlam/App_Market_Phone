@@ -65,6 +65,7 @@
                 android:layout_marginLeft="@dimen/paddingLeft_layout_screen">
 
                 <TextView
+                    android:id="@+id/tvDisplayNameEditProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/display_name"/>
@@ -79,8 +80,6 @@
 
 
             </LinearLayout>
-
-
 
         </LinearLayout>
 

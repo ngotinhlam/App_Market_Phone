@@ -4,7 +4,6 @@
     android:id="@+id/activity_my_news"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nguyen.thanhlong.chosmartphone.MyNewsActivity"
     android:orientation="vertical"
     android:background="@drawable/background_main">
 
