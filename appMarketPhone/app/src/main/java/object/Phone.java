@@ -1,19 +1,24 @@
 package object;
 
 
+import java.io.Serializable;
 
-public class Phone {
-    String id, userid, title, price, description, urlimage1, urlimage2, urlimage3;
+public class Phone implements Serializable{
+    String id, userid, title, price, description, urlimage1, urlimage2, urlimage3, date;
 
-    public Phone(String id, String userid, String title, String price, String description, String urlimage1, String urlimage2, String urlimage3) {
+    public Phone() {
+    }
+
+    public Phone(String id, String userid, String title, String price, String description, String urlimage1, String urlimage2, String urlimage3, String date) {
         this.id = id;
         this.userid = userid;
         this.title = title;
+        this.price = price;
         this.description = description;
         this.urlimage1 = urlimage1;
         this.urlimage2 = urlimage2;
         this.urlimage3 = urlimage3;
-        this.price = price;
+        this.date = date;
     }
 
     public String getId() {
@@ -38,6 +43,14 @@ public class Phone {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getDescription() {
@@ -72,11 +85,11 @@ public class Phone {
         this.urlimage3 = urlimage3;
     }
 
-    public String getPrice() {
-        return price;
+    public String getDate() {
+        return date;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setDate(String date) {
+        this.date = date;
     }
 }

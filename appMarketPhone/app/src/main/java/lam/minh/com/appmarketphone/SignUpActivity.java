@@ -1,5 +1,6 @@
 package lam.minh.com.appmarketphone;
 
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,6 +27,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import dialog.NotificationDialog;
 import handle.DatabaseFirebase;
 import handle.Validate;
 import object.Account;
@@ -39,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     DatabaseFirebase df;
     Bitmap bitmapAvatar;
     ProgressDialog progressDialog;
+    NotificationDialog notificationDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_up_screen);
         initView();
         progressDialog = new ProgressDialog(this);
+        notificationDialog = new NotificationDialog(this);
         df = new DatabaseFirebase();
     }
 
@@ -74,29 +78,29 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             //Nhấn hoàn tất đăng ký
             case R.id.btnComplete:
-                String name = etName.getText().toString().trim();
+                final String name = etName.getText().toString().trim();
                 final String phone = etPhone.getText().toString().trim();
                 final String address = etAddress.getText().toString().trim();
                 final String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 String retypepassword = etRetypePassword.getText().toString().trim();
                 if (name.equals("") || phone.equals("") || address.equals("") || email.equals("") || password.equals("") || retypepassword.equals("")) {
-                    Toast.makeText(this, "Phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    notificationDialog.showMessage("Thông báo", "Phải nhập đầy đủ thông tin");
                 } else {
                     if (!Validate.isValidPhoneNumber(phone)) {
-                        Toast.makeText(this, "Số đt không hợp lệ", Toast.LENGTH_SHORT).show();
+                        notificationDialog.showMessage("Thông báo", "Số điện thoại không hợp lệ");
                         return;
                     }
                     if (!Validate.isValidEmail(email)) {
-                        Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+                        notificationDialog.showMessage("Thông báo", "Email không hợp lệ");
                         return;
                     }
                     if (!Validate.isValidPassword(password)) {
-                        Toast.makeText(this, "Mật khẩu phải từ 6 kí tự trở lên", Toast.LENGTH_SHORT).show();
+                        notificationDialog.showMessage("Thông báo", "Mật khẩu phải từ 6 kí tự trở lên");
                         return;
                     }
                     if (!password.equals(retypepassword)) {
-                        Toast.makeText(this, "Nhập lại mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                        notificationDialog.showMessage("Thông báo", "Nhập lại mật khẩu không đúng");
                         return;
                     }
                     //Hiện progress dialog
@@ -109,12 +113,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                        Account account = new Account(user.getUid(), email, address, phone, "");
+                                        Account account = new Account(user.getUid(),name, email, address, phone, "");
                                         df.addAccount(account, bitmapAvatar);
-                                        Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                        notificationDialog.showMessage("Thông báo", "Đăng ký thành công");
                                         clearInfo();
                                     } else {
                                         Log.d("error", task.getException().getMessage());
+                                        notificationDialog.showMessage("Thông báo", "Đăng ký thất bại, vui lòng thử lại sau");
                                     }
                                     progressDialog.dismiss(); //Đóng progress dialog
                                 }

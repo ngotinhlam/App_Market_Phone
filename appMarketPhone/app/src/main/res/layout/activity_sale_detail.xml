@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/background_main">
+    android:background="@drawable/bg2">
 
 
     <RelativeLayout
@@ -57,11 +57,13 @@
             android:padding="@dimen/appbar_padding_top">
 
             <ImageView
+                android:clickable="false"
                 android:layout_width="@dimen/size_small_icon"
                 android:layout_height="@dimen/size_small_icon"
                 android:src="@drawable/logo_call"/>
 
             <TextView
+                android:clickable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_call"
@@ -81,11 +83,13 @@
             android:padding="@dimen/appbar_padding_top">
 
             <ImageView
+                android:clickable="false"
                 android:layout_width="@dimen/size_small_icon"
                 android:layout_height="@dimen/size_small_icon"
                 android:src="@drawable/logo_sms"/>
 
             <TextView
+                android:clickable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_sms"
@@ -99,6 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/rl1"
+        android:layout_above="@id/llIncludeSaleDetail"
         android:layout_alignParentStart="true">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -137,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tiêu đề sản phẩm"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="@dimen/textSize_tvTitleProductSaleDetail"
                 android:layout_marginLeft="@dimen/appbar_padding_top"/>
@@ -190,7 +195,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ngày đăng"
-                        android:textSize="@dimen/textSize_tvDisplayNameSaleDetail"/>
+                        android:textSize="@dimen/textSize_tvDisplayNameSaleDetail"
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
@@ -200,6 +206,7 @@
                 android:id="@+id/tvDescribeSaleDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="asdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf123"
                 android:layout_marginTop="@dimen/appbar_padding_top"
                 android:paddingLeft="@dimen/appbar_padding_top"
@@ -225,14 +232,15 @@
                     android:layout_height="wrap_content"
                     android:text="@string/hint_etAddressSignUp"
                     android:textSize="@dimen/textSize_tvDisplayNameSaleDetail"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/tvAddressProductSaleDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="asdasdadasdasdasdasdadasdadasdasdasdadsasdasdasdasdasdasdasdasdasdasdas"
-                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
+                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"
+                    android:textColor="@color/white"/>
 
             </LinearLayout>
 

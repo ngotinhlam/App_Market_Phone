@@ -21,10 +21,6 @@ import lam.minh.com.appmarketphone.FragmentPostNews;
 import object.Account;
 import object.Phone;
 
-/**
- * Created by Admin on 10/19/2017.
- */
-
 public class DatabaseFirebase {
 
     DatabaseReference rootDatabase; //nút gốc của database
@@ -37,7 +33,7 @@ public class DatabaseFirebase {
     }
 
     public void addAccount(final Account account, Bitmap bitmap) {
-        final String uid = account.getUid();
+        final String uid = account.getUserid();
         final DatabaseReference mUsers = rootDatabase.child("users").child(uid);
         StorageReference mAvatars = rootStorage.child("avatar").child("avatar_" + uid + ".jpg");
 

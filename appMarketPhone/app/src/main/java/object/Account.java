@@ -5,22 +5,33 @@ package object;
  */
 
 public class Account {
-    String uid, email, address, phone, avatar;
+    String userid, username, email, address, phone, avatar;
 
-    public Account(String uid, String email, String address, String phone, String avatar) {
-        this.uid = uid;
+    public Account() {}
+
+    public Account(String userid, String username, String email, String address, String phone, String avatar) {
+        this.userid = userid;
+        this.username = username;
         this.email = email;
         this.address = address;
         this.phone = phone;
         this.avatar = avatar;
     }
 
-    public String getUid() {
-        return uid;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

@@ -25,7 +25,7 @@ public class Validate {
         } else if (number.length() == 10 || number.length() == 11) {
             if (number.length() == 10) {
                 if (number.substring(0, 2).equals("09")) {
-                    return false;
+                    return true;
                 } else {
                     return false;
                 }

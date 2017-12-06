@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import dialog.NotificationDialog;
+import handle.Authentication;
+import object.Account;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -35,8 +37,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in_screen);
+
         initView();
+
         mAuth = FirebaseAuth.getInstance();
+        //Kiểm tra xem có tài khoản đang nhập hay không
+        if (mAuth.getCurrentUser() != null) { //Có tài khoản đăng nhập
+            DatabaseReference drUser = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getUid());
+            drUser.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Account account = dataSnapshot.getValue(Account.class);
+                    Authentication.account = account;
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
         progressDialog = new ProgressDialog(this);
         notificationDialog = new NotificationDialog(this);
     }

@@ -24,8 +24,13 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import dialog.NotificationDialog;
 import handle.DatabaseFirebase;
@@ -82,20 +87,41 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
         etPrice.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                etPrice.removeTextChangedListener(this);
-                etPrice.setText(formatDecimal(charSequence.toString()));
-                etPrice.setSelection(etPrice.getText().length());
-                etPrice.addTextChangedListener(this);
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable s) {
+                etPrice.removeTextChangedListener(this);
+                try {
+                    String originalString = s.toString();
+                    if (originalString.length() > 25) {
+                        return;
+                    }
+                    if (originalString.equals("")) {
+                        originalString = "0";
+                    }
+                    Long longval;
+                    if (originalString.contains(",")) {
+                        originalString = originalString.replaceAll(",", "");
+                    }
+                    longval = Long.parseLong(originalString);
 
+                    DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                    formatter.applyPattern("#,###,###,###");
+                    String formattedString = formatter.format(longval);
+
+                    //setting text after format to EditText
+                    etPrice.setText(formattedString);
+                    etPrice.setSelection(etPrice.getText().length());
+                } catch (NumberFormatException nfe) {
+                    nfe.printStackTrace();
+                }
+
+                etPrice.addTextChangedListener(this);
             }
         });
     }
@@ -194,7 +220,9 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
                     notificationDialog.showMessage("Thông báo", "Phải điền đủ thông tin");
                     return;
                 }
-                Phone phone = new Phone(id, userid, title, price, description, "", "", "");
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date date = new Date();
+                Phone phone = new Phone(id, userid, title, price, description, "", "", "", dateFormat.format(date));
                 df.addProduct(phone, bitmap1, bitmap2, bitmap3);
                 break;
         }
