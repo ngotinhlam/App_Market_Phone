@@ -70,7 +70,6 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
         return rootView;
     }
 
-
     public void initView(View view) {
         ivImageProduct1 = (ImageView) view.findViewById(R.id.ivImageProduct1PostSale);
         ivImageProduct2 = (ImageView) view.findViewById(R.id.ivImageProduct2PostSale);
@@ -137,7 +136,6 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
     }
 
     public void clearImage(ImageView imageView, String urlimage, Button clearimage) {
-        imageView.setImageResource(R.drawable.logo_camera);
         imageView.setImageResource(R.drawable.logo_camera);
         urlimage = "";
         clearimage.setVisibility(View.INVISIBLE);
