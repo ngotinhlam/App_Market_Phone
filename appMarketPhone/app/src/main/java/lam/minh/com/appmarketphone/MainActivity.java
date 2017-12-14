@@ -14,14 +14,18 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
 import handle.LocaleHelper;
+import object.Account;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -29,12 +33,30 @@ public class MainActivity extends AppCompatActivity{
     TabLayout tabLayout;
     FragmentAdapter fragmentAdapter;
     ArrayList<Fragment> listFragment;
+    public static Account user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
+        FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(Account.class);
+                if (user.isNotifications()) {
+                    FirebaseMessaging.getInstance().subscribeToTopic("notifications");
+                } else {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("notifications");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

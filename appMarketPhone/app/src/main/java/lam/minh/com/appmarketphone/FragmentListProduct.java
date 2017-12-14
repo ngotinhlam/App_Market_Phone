@@ -55,6 +55,19 @@ public class FragmentListProduct extends Fragment {
                 startActivity(intent);
             }
         });
+
+        svProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.filterSearch(s);
+                return false;
+            }
+        });
     }
 
     public void getListPhones() {
@@ -67,9 +80,7 @@ public class FragmentListProduct extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Phone phone = dataSnapshot.getValue(Phone.class);
-                Log.d("aaa", phone.getId());
                 adapter.addPhone(phone);
-                Log.d("aaa", listPhones.size()+"");
             }
 
             @Override

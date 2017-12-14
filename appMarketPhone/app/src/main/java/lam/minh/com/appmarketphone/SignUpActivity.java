@@ -114,7 +114,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                        Account account = new Account(user.getUid(),name, email, address, phone, "");
+                                        Account account = new Account(user.getUid(),name, email, address, phone, "", true);
                                         df.addAccount(account, bitmapAvatar);
                                         notificationDialog.showMessage("Thông báo", "Đăng ký thành công");
                                         clearInfo();

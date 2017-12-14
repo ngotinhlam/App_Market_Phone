@@ -1,8 +1,7 @@
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -99,7 +98,8 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
             <EditText
                 android:id="@+id/etTitleProductPostSale"
@@ -120,7 +120,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/paddingLeft_layout_screen"
                 android:layout_centerVertical="true"
-                android:textColorHint="@color/white">
+                android:textColorHint="@color/white"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <EditText
                     android:id="@+id/etPriceProductPostSale"
@@ -151,7 +152,8 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
             <EditText
                 android:id="@+id/etDescriptionProductPostSale"

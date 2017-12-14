@@ -51,6 +51,60 @@ public class EditSaleActivity extends AppCompatActivity implements View.OnClickL
     public static ProgressDialog progressDialog;
     DatabaseFirebase df;
 
+    Target target1 = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            ivImageProduct1.setImageBitmap(bitmap);
+            bitmap1 = bitmap;
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
+    Target target2 = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            ivImageProduct2.setImageBitmap(bitmap);
+            bitmap2 = bitmap;
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
+    Target target3 = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            ivImageProduct3.setImageBitmap(bitmap);
+            bitmap3 = bitmap;
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,64 +122,20 @@ public class EditSaleActivity extends AppCompatActivity implements View.OnClickL
         etTitle.setText(phone.getTitle());
         etPrice.setText(phone.getPrice());
         etDescription.setText(phone.getDescription());
+
         if (!phone.getUrlimage1().equals("")) {
-            Picasso.with(this).load(phone.getUrlimage1()).into(new Target() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    ivImageProduct1.setImageBitmap(bitmap);
-                    bitmap1 = bitmap;
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                }
-            });
+            Picasso.with(this).load(phone.getUrlimage1()).into(target1);
+            ivImageProduct1.setTag(target1);
             btnClearImage1.setVisibility(View.VISIBLE);
         }
         if (!phone.getUrlimage2().equals("")) {
-            Picasso.with(this).load(phone.getUrlimage2()).into(new Target() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    ivImageProduct2.setImageBitmap(bitmap);
-                    bitmap2 = bitmap;
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                }
-            });
+            Picasso.with(this).load(phone.getUrlimage2()).into(target2);
+            ivImageProduct2.setTag(target2);
             btnClearImage2.setVisibility(View.VISIBLE);
         }
         if (!phone.getUrlimage3().equals("")) {
-            Picasso.with(this).load(phone.getUrlimage3()).into(new Target() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    ivImageProduct3.setImageBitmap(bitmap);
-                    bitmap3 = bitmap;
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                }
-            });
+            Picasso.with(this).load(phone.getUrlimage3()).into(target3);
+            ivImageProduct3.setTag(target3);
             btnClearImage3.setVisibility(View.VISIBLE);
         }
     }
@@ -244,10 +254,9 @@ public class EditSaleActivity extends AppCompatActivity implements View.OnClickL
         });
     }
 
-    public void clearImage(ImageView imageView, Bitmap bitmap, String urlimage, Button clearimage) {
+    public void clearImage(ImageView imageView, String urlimage, Button clearimage) {
         imageView.setImageResource(R.drawable.logo_camera);
         imageView.setImageResource(R.drawable.logo_camera);
-        bitmap = null;
         urlimage = "";
         clearimage.setVisibility(View.INVISIBLE);
     }
@@ -272,13 +281,16 @@ public class EditSaleActivity extends AppCompatActivity implements View.OnClickL
                 startActivityForResult(intent, CHOOSE_IMAGE_3);
                 break;
             case R.id.btnClearImage1EditSale:
-                clearImage(ivImageProduct1, bitmap1, urlimage1, btnClearImage1);
+                bitmap1 = null;
+                clearImage(ivImageProduct1, urlimage1, btnClearImage1);
                 break;
             case R.id.btnClearImage2EditSale:
-                clearImage(ivImageProduct2, bitmap2, urlimage2, btnClearImage2);
+                bitmap2 = null;
+                clearImage(ivImageProduct2, urlimage2, btnClearImage2);
                 break;
             case R.id.btnClearImage3EditSale:
-                clearImage(ivImageProduct3, bitmap3, urlimage3, btnClearImage3);
+                bitmap3 = null;
+                clearImage(ivImageProduct3, urlimage3, btnClearImage3);
                 break;
             case R.id.btnAgreeEditSale:
                 String title = etTitle.getText().toString().trim();
@@ -287,6 +299,10 @@ public class EditSaleActivity extends AppCompatActivity implements View.OnClickL
                 //Kiểm tra
                 if (title.equals("") || price.equals("") || description.equals("")) {
                     notificationDialog.showMessage(getString(R.string.title_notification), getString(R.string.empty_warning));
+                    return;
+                }
+                if (bitmap1 == null || bitmap2 == null || bitmap3 == null) {
+                    notificationDialog.showMessage("Thông báo", getString(R.string.not_enough_photos));
                     return;
                 }
                 progressDialog.show();

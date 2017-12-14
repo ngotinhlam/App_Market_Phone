@@ -134,6 +134,7 @@
     <string name="currency_unit">VNĐ</string>
     <string name="hint_etDescriptionProductPostSale">Mô tả</string>
     <string name="text_btnAgreePostSale">Đăng bán</string>
+    <string name="not_enough_photos">Phải chọn đủ 3 ảnh mới có thể đăng bài</string>
 
     <!--Cua so sua tin-->
     <string name="title_edit_sale">Sửa bài</string>

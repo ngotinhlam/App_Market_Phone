@@ -10,11 +10,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,6 +26,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -33,14 +37,39 @@ import handle.LocaleHelper;
 import object.Account;
 
 
-public class FragmentProfile extends Fragment implements View.OnClickListener{
+public class FragmentProfile extends Fragment implements View.OnClickListener {
 
     RelativeLayout rlProfile;
     LinearLayout llMyNews, llChangeLanguage;
+    SwitchCompat scNotification;
     public static CircleImageView civAvatar;
     public static TextView tvName;
     Button btnSignOut;
     Account user;
+    DatabaseReference drUser;
+
+    ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            user = dataSnapshot.getValue(Account.class);
+            tvName.setText(user.getUsername());
+            if (!user.getAvatar().equals("")) {
+                Picasso.with(getContext()).load(user.getAvatar()).into(civAvatar);
+            } else {
+                civAvatar.setImageResource(R.drawable.logo_no_avatar);
+            }
+            if (user.isNotifications()) {
+                scNotification.setChecked(true);
+            } else {
+                scNotification.setChecked(false);
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 
     @Nullable
     @Override
@@ -49,23 +78,8 @@ public class FragmentProfile extends Fragment implements View.OnClickListener{
         initView(view);
 
         //Lấy thông tin tài khoản đang đăng nhập
-        FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                user = dataSnapshot.getValue(Account.class);
-                tvName.setText(user.getUsername());
-                if (!user.getAvatar().equals("")) {
-                    Picasso.with(getContext()).load(user.getAvatar()).into(civAvatar);
-                } else {
-                    civAvatar.setImageResource(R.drawable.logo_no_avatar);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        drUser = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getUid());
+        drUser.addValueEventListener(listener);
 
         return view;
     }
@@ -76,11 +90,22 @@ public class FragmentProfile extends Fragment implements View.OnClickListener{
         llChangeLanguage = (LinearLayout) view.findViewById(R.id.llChangeLaguage);
         civAvatar = (CircleImageView) view.findViewById(R.id.circleViewAvatar);
         tvName = (TextView) view.findViewById(R.id.tvProfileName);
+        scNotification = (SwitchCompat) view.findViewById(R.id.scNotification);
         btnSignOut = (Button) view.findViewById(R.id.btnSignOut);
         rlProfile.setOnClickListener(this);
         llMyNews.setOnClickListener(this);
         llChangeLanguage.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
+
+        scNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (user!=null) {
+                    user.setNotifications(isChecked);
+                    drUser.setValue(user);
+                }
+            }
+        });
     }
 
     @Override
