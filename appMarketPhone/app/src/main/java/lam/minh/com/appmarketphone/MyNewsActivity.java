@@ -60,7 +60,7 @@ public class MyNewsActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Phone phone = dataSnapshot.getValue(Phone.class);
-                if (phone.getUserid().equals(uid)) {
+                if (phone.getUserid().equals(uid)) { //Kiểm tra xem nếu là sản phẩm của mình đăng thì add vào list
                     adapter.addPhone(phone);
                 }
             }
@@ -91,7 +91,7 @@ public class MyNewsActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        getMenuInflater().inflate(R.menu.menu_my_news, menu);
+        getMenuInflater().inflate(R.menu.menu_my_news, menu);//tạo context menu gán contextmenu bên menu_my_new vào
     }
 
     @Override
@@ -145,7 +145,7 @@ public class MyNewsActivity extends AppCompatActivity {
     public void initView() {
         ivBack = (ImageView) findViewById(R.id.ivBackMyNews);
         lvMyPhones = (ListView) findViewById(R.id.lvProductMyNews);
-        registerForContextMenu(lvMyPhones);
+        registerForContextMenu(lvMyPhones); //Gán menu ngữ cảnh cho listview (long click vào sẽ hiện menu ngữ cảnh)
         lvMyPhones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

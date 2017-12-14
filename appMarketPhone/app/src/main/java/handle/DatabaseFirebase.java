@@ -72,9 +72,9 @@ public class DatabaseFirebase {
     public void addProduct(final Phone phone, Bitmap bitmap1, final Bitmap bitmap2, final Bitmap bitmap3) {
         String phoneid = phone.getId();
 
-        final DatabaseReference drPhones = rootDatabase.child("phones").child(phoneid);
-        StorageReference srImage1 = rootStorage.child("images").child(phoneid + "_1.jpg");
-        final StorageReference srImage2 = rootStorage.child("images").child(phoneid + "_2.jpg");
+        final DatabaseReference drPhones = rootDatabase.child("phones").child(phoneid);//tạo root phones
+        StorageReference srImage1 = rootStorage.child("images").child(phoneid + "_1.jpg");//tạo root chứa ảnh
+        final StorageReference srImage2 = rootStorage.child("images").child(phoneid + "_2.jpg");//nằm chung thưc mục images
         final StorageReference srImage3 = rootStorage.child("images").child(phoneid + "_3.jpg");
 
         if (bitmap1 != null) {
@@ -82,19 +82,19 @@ public class DatabaseFirebase {
             bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte[] data = baos.toByteArray();
 
-            UploadTask uploadTask = srImage1.putBytes(data);
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) { //Upload avatar thất bại
-                    Log.d("error", exception.getMessage().toString());
+                    UploadTask uploadTask = srImage1.putBytes(data);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) { //Upload avatar thất bại
+                            Log.d("error", exception.getMessage().toString());
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) { //Upload avatar thành công
                     // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();//Trả về 1 cái download URL
                     String url = downloadUrl.toString();
-                    phone.setUrlimage1(url);
+                    phone.setUrlimage1(url);//set địa chỉ ảnh thứ 1
                     if (bitmap2 != null) {
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
                         bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);

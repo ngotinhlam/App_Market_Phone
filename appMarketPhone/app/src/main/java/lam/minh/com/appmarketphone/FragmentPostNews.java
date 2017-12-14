@@ -153,8 +153,10 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
                     try {
                         //Lấy bitmap từ một URI
                         bitmap1 = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), avatarUri);
+                        //lấy ảnh từ profile chuyển thành bitmap
                         //Gán ảnh cho mage View
                         ivImageProduct1.setImageBitmap(bitmap1);
+                        //set bitmap lên ô ảnh 1
                         //Hiện nút xóa ảnh
                         btnClearImage1.setVisibility(View.VISIBLE);
                     } catch (IOException e) {
@@ -222,7 +224,7 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnAgreePostSale:
                 Calendar calendar = Calendar.getInstance();
-                String id = "PHONE" + calendar.getTimeInMillis();
+                String id = "PHONE" + calendar.getTimeInMillis();//với số là giờ phút giây được đổi thằng mili
                 String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String title = etTitle.getText().toString().trim();
                 String description = etDescription.getText().toString().trim();
