@@ -1,6 +1,7 @@
 package lam.minh.com.appmarketphone;
 
 import android.app.Notification;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -41,6 +43,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class FragmentPostNews extends Fragment implements View.OnClickListener {
 
+    public View rootView = null;
     public static ImageView ivImageProduct1, ivImageProduct2, ivImageProduct3;
     public static EditText etTitle, etPrice, etDescription;
     public static Button btnClearImage1, btnClearImage2, btnClearImage3, btnPost;
@@ -51,15 +54,22 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
     Intent intent;
     DatabaseFirebase df;
     public static NotificationDialog notificationDialog;
+    public static ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_post_news, container, false);
-        initView(view);
-        df = new DatabaseFirebase();
-        notificationDialog = new NotificationDialog(getContext());
-        return view;
+       if (rootView == null) {
+           rootView = inflater.inflate(R.layout.fragment_post_news, container, false);
+           initView(rootView);
+           df = new DatabaseFirebase(getActivity());
+           notificationDialog = new NotificationDialog(getContext());
+           progressDialog = new ProgressDialog(getContext());
+           progressDialog.setCanceledOnTouchOutside(false);
+       }
+
+        return rootView;
     }
+
 
     public void initView(View view) {
         ivImageProduct1 = (ImageView) view.findViewById(R.id.ivImageProduct1PostSale);
@@ -126,9 +136,13 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
         });
     }
 
-    public void clearImage(ImageView imageView, Bitmap bitmap, String urlimage, Button clearimage) {
+    public void clearImage(ImageView imageView, String urlimage, Button clearimage) {
         imageView.setImageResource(R.drawable.logo_camera);
+<<<<<<< HEAD
         bitmap = null;
+=======
+        imageView.setImageResource(R.drawable.logo_camera);
+>>>>>>> aefac5b1fe7d89a452bba738926b87d0aacda398
         urlimage = "";
         clearimage.setVisibility(View.INVISIBLE);
     }
@@ -199,13 +213,16 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
                 startActivityForResult(intent, CHOOSE_IMAGE_3);
                 break;
             case R.id.btnClearImage1:
-                clearImage(ivImageProduct1, bitmap1, urlimage1, btnClearImage1);
+                bitmap1 = null;
+                clearImage(ivImageProduct1, urlimage1, btnClearImage1);
                 break;
             case R.id.btnClearImage2:
-                clearImage(ivImageProduct2, bitmap2, urlimage2, btnClearImage2);
+                bitmap2 = null;
+                clearImage(ivImageProduct2, urlimage2, btnClearImage2);
                 break;
             case R.id.btnClearImage3:
-                clearImage(ivImageProduct3, bitmap3, urlimage3, btnClearImage3);
+                bitmap3 = null;
+                clearImage(ivImageProduct3, urlimage3, btnClearImage3);
                 break;
             case R.id.btnAgreePostSale:
                 Calendar calendar = Calendar.getInstance();
@@ -219,21 +236,17 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
                     notificationDialog.showMessage("Thông báo", "Phải điền đủ thông tin");
                     return;
                 }
+                if (bitmap1 == null || bitmap2 == null || bitmap3 == null) {
+                    notificationDialog.showMessage("Thông báo", getString(R.string.not_enough_photos));
+                    return;
+                }
+                progressDialog.setMessage("Đang xử lý");
+                progressDialog.show();
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                 Date date = new Date();
                 Phone phone = new Phone(id, userid, title, price, description, "", "", "", dateFormat.format(date));
                 df.addProduct(phone, bitmap1, bitmap2, bitmap3);
                 break;
-        }
-    }
-
-    public static String formatDecimal(String value) {
-        if (!value.equals("")) {
-            value = value.replace(".", "");
-            DecimalFormat df = new DecimalFormat("#,###,###,###");
-            return df.format(Double.valueOf(value));
-        } else {
-            return "0";
         }
     }
 

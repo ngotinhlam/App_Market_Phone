@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,19 @@ public class FragmentListProduct extends Fragment {
                 startActivity(intent);
             }
         });
+
+        svProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.filterSearch(s);
+                return false;
+            }
+        });
     }
 
     public void getListPhones() {
@@ -66,18 +80,19 @@ public class FragmentListProduct extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Phone phone = dataSnapshot.getValue(Phone.class);
-                listPhones.add(phone);
                 adapter.addPhone(phone);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                Phone phone = dataSnapshot.getValue(Phone.class);
+                adapter.editPhone(phone);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                Phone phone = dataSnapshot.getValue(Phone.class);
+                adapter.removePhone(phone);
             }
 
             @Override

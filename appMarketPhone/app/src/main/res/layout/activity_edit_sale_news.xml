@@ -121,14 +121,16 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white">
 
                 <EditText
                     android:id="@+id/etTitleProductEditSale"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_etTitleProductPostSale"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -140,7 +142,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/paddingLeft_layout_screen"
-                    android:layout_centerVertical="true">
+                    android:layout_centerVertical="true"
+                    android:textColorHint="@color/white">
 
                     <EditText
                         android:id="@+id/etPriceProductEditSale"
@@ -149,7 +152,8 @@
                         android:hint="@string/hint_etPriceProductPostSale"
                         android:inputType="number"
                         android:textStyle="bold"
-                        android:maxLength="25"/>
+                        android:maxLength="25"
+                        android:textColor="@color/white"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -168,14 +172,16 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white">
 
                 <EditText
                     android:id="@+id/etDescriptionProductEditSale"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_etDescriptionProductPostSale"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
 
             </android.support.design.widget.TextInputLayout>
 

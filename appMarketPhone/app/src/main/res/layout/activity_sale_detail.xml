@@ -20,22 +20,6 @@
             android:layout_width="@dimen/size_logo_back"
             android:layout_height="@dimen/size_logo_back"
             android:src="@drawable/logo_back"/>
-
-        <ImageView
-            android:id="@+id/ivMenuSaleDetail"
-            android:layout_width="@dimen/size_logo_back"
-            android:layout_height="@dimen/size_logo_back"
-            android:src="@drawable/logo_menu"
-            android:layout_alignParentRight="true"/>
-
-        <ImageView
-            android:id="@+id/ivFollowSaleDetail"
-            android:layout_width="@dimen/size_logo_back"
-            android:layout_height="@dimen/size_logo_back"
-            android:src="@drawable/logo_heart_unselected"
-            android:layout_toLeftOf="@id/ivMenuSaleDetail"
-            android:layout_marginRight="@dimen/paddingLeft_layout_screen"/>
-
     </RelativeLayout>
 
     <LinearLayout

@@ -1,21 +1,19 @@
 package object;
 
-/**
- * Created by Admin on 10/19/2017.
- */
-
 public class Account {
     String userid, username, email, address, phone, avatar;
+    boolean notifications;
 
     public Account() {}
 
-    public Account(String userid, String username, String email, String address, String phone, String avatar) {
+    public Account(String userid, String username, String email, String address, String phone, String avatar, boolean notifications) {
         this.userid = userid;
         this.username = username;
         this.email = email;
         this.address = address;
         this.phone = phone;
         this.avatar = avatar;
+        this.notifications = notifications;
     }
 
     public String getUserid() {
@@ -64,5 +62,13 @@ public class Account {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public boolean isNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(boolean notifications) {
+        this.notifications = notifications;
     }
 }

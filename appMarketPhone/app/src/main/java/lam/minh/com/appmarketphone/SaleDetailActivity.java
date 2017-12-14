@@ -6,12 +6,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +21,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import handle.Authentication;
 import handle.SlideImagePagerAdapter;
 import me.relex.circleindicator.CircleIndicator;
 import object.Account;
@@ -31,7 +28,7 @@ import object.Phone;
 
 public class SaleDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView ivBackSaleDetail, ivMenuSaleDetail, ivFollowSaleDetail;
+    ImageView ivBackSaleDetail;
     TextView tvTitleProductSaleDetail, tvPriceProductSaleDetail, tvDisplayNameSaleDetail, tvDatePostProductSaleDetail, tvDescribeSaleDetail, tvAddressProductSaleDetail;
     CircleImageView civAvatarSaleDetail;
     LinearLayout llCall, llSms;
@@ -51,7 +48,6 @@ public class SaleDetailActivity extends AppCompatActivity implements View.OnClic
         tvDescribeSaleDetail.setText(phone.getDescription());
         tvPriceProductSaleDetail.setText(phone.getPrice() + " VNĐ");
         tvDatePostProductSaleDetail.setText(phone.getDate());
-        tvAddressProductSaleDetail.setText(Authentication.account.getAddress());
 
         //Phần đưa ảnh vào ViewPager
         ArrayList<String> lstUrlImg = new ArrayList<>();
@@ -75,6 +71,7 @@ public class SaleDetailActivity extends AppCompatActivity implements View.OnClic
             public void onDataChange(DataSnapshot dataSnapshot) {
                 account = dataSnapshot.getValue(Account.class);
                 tvDisplayNameSaleDetail.setText(account.getUsername());
+                tvAddressProductSaleDetail.setText(account.getAddress());
                 Picasso.with(SaleDetailActivity.this).load(account.getAvatar()).into(civAvatarSaleDetail);
             }
 
@@ -87,8 +84,6 @@ public class SaleDetailActivity extends AppCompatActivity implements View.OnClic
 
     public void initView() {
         ivBackSaleDetail = (ImageView) findViewById(R.id.ivBackSaleDetail);
-        ivFollowSaleDetail = (ImageView) findViewById(R.id.ivFollowSaleDetail);
-        ivMenuSaleDetail = (ImageView) findViewById(R.id.ivMenuSaleDetail);
         vpImageSaleDetail = (ViewPager) findViewById(R.id.vpImageSaleDetail);
         llCall = (LinearLayout) findViewById(R.id.llCallSaleDetail);
         llSms = (LinearLayout) findViewById(R.id.llSmsSaleDetail);

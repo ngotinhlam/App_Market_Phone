@@ -12,15 +12,17 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import lam.minh.com.appmarketphone.R;
 import object.Phone;
 
 public class PhoneAdapter extends BaseAdapter {
 
-    ArrayList<Phone> list;
+    ArrayList<Phone> list, listCopy;
     LayoutInflater inflater;
     Context context;
 
@@ -47,8 +49,30 @@ public class PhoneAdapter extends BaseAdapter {
 
     public void addPhone(Phone phone) {
         list.add(phone);
-        Log.d("aaa", phone.getUrlimage1() + " | " + phone.getUrlimage2() + " | " + phone.getUrlimage3());
+        listCopy = new ArrayList<>(list);
         notifyDataSetChanged();
+    }
+
+    public void editPhone(Phone phone) {
+        for (int i = 0; i < list.size(); i++) {
+            Phone p = list.get(i);
+            if (p.getId().equals(phone.getId())) {
+                list.set(i, phone);
+                notifyDataSetChanged();
+                return;
+            }
+        }
+    }
+
+    public void removePhone(Phone phone) {
+        for (int i = 0; i < list.size(); i++) {
+            Phone p = list.get(i);
+            if (p.getId().equals(phone.getId())) {
+                list.remove(i);
+                notifyDataSetChanged();
+                return;
+            }
+        }
     }
 
     class ViewHolder {
@@ -91,5 +115,25 @@ public class PhoneAdapter extends BaseAdapter {
         holder.tvDate.setText(phone.getDate());
 
         return view;
+    }
+
+    public void filterSearch(String str) {
+        if (listCopy != null) {
+            list.clear();
+            for (int i = 0; i < listCopy.size(); i++) {
+                Phone phone = listCopy.get(i);
+                if (removeAccent(phone.getTitle()).indexOf(removeAccent(str)) != -1) {
+                    list.add(phone);
+                }
+            }
+            notifyDataSetChanged();
+        }
+    }
+
+    //Hàm chuyển chuỗi có dấu thành không dấu và in thường tất cả
+    public static String removeAccent(String s) {
+        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("").toLowerCase().replaceAll(" ", "-").replaceAll("đ", "d");
     }
 }

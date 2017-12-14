@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,9 +19,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import dialog.NotificationDialog;
-import handle.Authentication;
 import object.Account;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
@@ -43,22 +42,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
         //Kiểm tra xem có tài khoản đang nhập hay không
         if (mAuth.getCurrentUser() != null) { //Có tài khoản đăng nhập
-            DatabaseReference drUser = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getUid());
-            drUser.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Account account = dataSnapshot.getValue(Account.class);
-                    Authentication.account = account;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
+
         progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
         notificationDialog = new NotificationDialog(this);
     }
 

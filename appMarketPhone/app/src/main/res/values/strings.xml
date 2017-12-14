@@ -42,6 +42,7 @@
     <string name="post_fail">Đăng tin bán thất bại</string>
 
     <!--Thong bao dialog-->
+    <string name="title_notification">Thông báo</string>
     <string name="title_close_dialog">Đóng</string>
     <string name="title_send_mail_reset_password">Một email đã được gửi đến địa chỉ email của bạn để lấy lại mật khẩu</string>
     <string name="title_send_mail_reset_password_fail">Không thể gửi email lấy lại mật khẩu vào lúc này, vui lòng thử lại sau</string>
@@ -133,6 +134,7 @@
     <string name="currency_unit">VNĐ</string>
     <string name="hint_etDescriptionProductPostSale">Mô tả</string>
     <string name="text_btnAgreePostSale">Đăng bán</string>
+    <string name="not_enough_photos">Phải chọn đủ 3 ảnh mới có thể đăng bài</string>
 
     <!--Cua so sua tin-->
     <string name="title_edit_sale">Sửa bài</string>
@@ -157,6 +159,7 @@
     <string name="sale_has_been_deleted">Tin đã bị xóa</string>
 
     <!--Menu sua, xoa tin-->
+    <string name="watch_news">Xem tin</string>
     <string name="edit_sale_news">Sửa tin</string>
     <string name="remove_sale_news">Xóa tin</string>
     <string name="confirm_remove_sale_news_dialog">Bạn có muốn xóa tin không</string>
@@ -164,6 +167,7 @@
     <string name="can_not_edit_sale_news">Bạn không thể sửa tin của người khác</string>
     <string name="can_not_remove_sale_news">Bạn không thể xóa tin của người khác</string>
     <string name="remove_sale_news_success">Xóa tin thành công</string>
+    <string name="remove_sale_news_fail">Xóa tin thất bại</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

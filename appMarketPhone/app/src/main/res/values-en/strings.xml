@@ -111,4 +111,7 @@
     <string name="change_language">Change language</string>
     <string name="sale_has_been_deleted">The sale has been deleted</string>
     <string name="receive_notification">Receive notification when new news arrives</string>
+    <string name="not_enough_photos">Must choose 3 photos to post</string>
+    <string name="watch_news">watch the news</string>
+    <string name="remove_sale_news_fail">delete posts failed</string>
 </resources>

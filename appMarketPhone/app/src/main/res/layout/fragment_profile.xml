@@ -90,64 +90,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/llFavorite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:background="@drawable/selector_option"
-                android:layout_marginTop="@dimen/appbar_padding_top"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
-                android:layout_marginRight="@dimen/appbar_padding_top"
-                android:paddingLeft="@dimen/paddingLeft_layout_screen"
-                android:paddingRight="@dimen/paddingLeft_layout_screen"
-                android:paddingTop="@dimen/appbar_padding_top"
-                android:paddingBottom="@dimen/appbar_padding_top"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/logo_love" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/favorite"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llSearchSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:background="@drawable/selector_option"
-                android:layout_marginTop="@dimen/appbar_padding_top"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
-                android:layout_marginRight="@dimen/appbar_padding_top"
-                android:paddingLeft="@dimen/paddingLeft_layout_screen"
-                android:paddingRight="@dimen/paddingLeft_layout_screen"
-                android:paddingTop="@dimen/appbar_padding_top"
-                android:paddingBottom="@dimen/appbar_padding_top"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/logo_flag" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/search_save"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/paddingLeft_layout_screen"/>
-
-            </LinearLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
