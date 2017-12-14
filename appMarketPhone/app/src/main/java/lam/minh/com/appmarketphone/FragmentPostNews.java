@@ -128,7 +128,6 @@ public class FragmentPostNews extends Fragment implements View.OnClickListener {
 
     public void clearImage(ImageView imageView, Bitmap bitmap, String urlimage, Button clearimage) {
         imageView.setImageResource(R.drawable.logo_camera);
-        imageView.setImageResource(R.drawable.logo_camera);
         bitmap = null;
         urlimage = "";
         clearimage.setVisibility(View.INVISIBLE);
